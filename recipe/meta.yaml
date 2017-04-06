@@ -10,13 +10,17 @@ source:
   sha256: 6ff5f3180870836cae40f06fa10419f557208175f13ad7bc26caa77beb1f6e02
 
 build:
+  entry_points:
+    - jsonschema = jsonschema.cli:main
+
+build:
   number: 0
-  script: pip install .
+  script: ${PYTHON} setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
-  build:
+  host:
     - python
-    - pip
+    - setuptools
     - vcversioner
   run:
     - python
@@ -36,3 +40,4 @@ extra:
   recipe-maintainers:
     - minrk
     - ocefpaf
+    - mingwandroid
